@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type = "text/css" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  <section>
+    <div id="drawingTools">
+      <div id="Colores">
+        <button id="black"></button>
+        <button id="white"></button>
+        <button id="red"></button>
+        <button id="green"></button>
+        <button id="blue"></button>
+
+      </div>
+      <div id="limpiar">
+        <button id="LimpiarCanvas">Borrador</button>
+
+      </div>
+    </div>
+    <canvas id="canvas" width="800" height="500"></canvas>
+  </section>
+
+  </div>
+</body>
+</html>
