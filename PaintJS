@@ -23,7 +23,6 @@
     </div>
     <canvas id="canvas" width="800" height="500"></canvas>
   </section>
-
-  </div>
+<script src ="script.js"></script>
 </body>
 </html>
