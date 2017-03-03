@@ -3,14 +3,32 @@ var context = canvas.getContext('2d');
 context.lineWidth = 5;
 var down = false;
 
-canvas.addEventListener('mousemove', draw);
+canvas.addEventListener("mousemove", draw);
+
+canvas.addEventListener('mousedown', function()
+{
+  down = true;
+  context.beginPath();
+  context.moveTo(xPos,yPos);
+  canvas.addEventListener("mousemove", draw);
+
+});
+
+canvas.addEventListener('mouseup',function(){ down =false;});
 
 function draw(e)
 {
   xPos = e.clientX - canvas.offsetLeft;
   yPos = e.clientY - canvas.offsetTop;
 
-  alert(xPos);
-  alert(yPos);
-
+  if(down == true){
+    context.lineTo(xPos,yPos);
+    context.stroke();
+  }
+}
+function CambiarColor(color){
+  context.strokeStyle = color;
+}
+function limpiar(){
+  context.clearRect(0,0,canvas.width,canvas.height);
 }

@@ -3,26 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type = "text/css" href="style.css">
+  <script src ="fabric.js-1.7.7/dist/fabric.min.js"></script>
+
   <title>Document</title>
 </head>
 <body>
   <section>
     <div id="drawingTools">
       <div id="Colores">
-        <button id="black"></button>
-        <button id="white"></button>
-        <button id="red"></button>
-        <button id="green"></button>
-        <button id="blue"></button>
+        <button id="black" onclick="CambiarColor('black')"></button>
+        <button id="white" onclick="CambiarColor('white')"></button>
+        <button id="red" onclick="CambiarColor('red')"></button>
+        <button id="green" onclick="CambiarColor('green')"></button>
+        <button id="blue" onclick="CambiarColor('blue')"></button>
 
       </div>
       <div id="limpiar">
-        <button id="LimpiarCanvas">Borrador</button>
-
+        <button id="LimpiarCanvas" onclick="limpiar()">Borrador</button>
+          <button id ="Rectangulo" onclick="figura('Rect')">Cuadrado</button>
+          <button id ="Triangulo" onclick="figura('Triangle'')">Triangulo</button>
+          <button id ="Circulo" onclick="figura('Circle')">Circulo</button>
       </div>
+
     </div>
     <canvas id="canvas" width="800" height="500"></canvas>
+
   </section>
-<script src ="script.js"></script>
+
+  <script src ="script.js"></script>
 </body>
 </html>
