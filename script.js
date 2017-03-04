@@ -1,34 +1,64 @@
-var cancas = document.getElementById('canvas');
-var context = canvas.getContext('2d');
-context.lineWidth = 5;
-var down = false;
+var ban = false;
+var canvas;
 
-canvas.addEventListener("mousemove", draw);
+function Lapiz () {
+  if(ban==false){
+  canvas = window._canvas = new fabric.Canvas('canvas');
+  ban=true;
+    }
+    canvas.backgroundColor = '#efefef';
+    canvas.isDrawingMode= 1;
+    canvas.freeDrawingBrush.color = "purple";
+    canvas.freeDrawingBrush.width = 10;
+    canvas.renderAll();
 
-canvas.addEventListener('mousedown', function()
-{
-  down = true;
-  context.beginPath();
-  context.moveTo(xPos,yPos);
-  canvas.addEventListener("mousemove", draw);
+document.getElementById('Colores').addEventListener('click', function (e) {
+        console.log(e.target.value);
+        canvas.freeDrawingBrush.color = e.target.value;
+    });
+}
 
-});
 
-canvas.addEventListener('mouseup',function(){ down =false;});
+function figura(fig){
 
-function draw(e)
-{
-  xPos = e.clientX - canvas.offsetLeft;
-  yPos = e.clientY - canvas.offsetTop;
+  if(ban==false){
+  canvas = window._canvas = new fabric.Canvas('canvas');
+  ban=true;
+    }
+  switch (fig) {
 
-  if(down == true){
-    context.lineTo(xPos,yPos);
-    context.stroke();
+
+    case 1:
+    var rect = new fabric.Rect({
+      left: 100,
+      top: 100,
+      fill: "green",
+      width: 200,
+      height: 200
+
+    });
+      canvas.add(rect);
+      break;
+    case 2:
+    var triangle = new fabric.Triangle({
+     width: 20, height: 30, fill: "blue", left: 50, top: 50
+      });
+      canvas.add(triangle);
+
+      break;
+    case  3:
+    var circle = new fabric.Circle({
+      radius: 20, fill: "red", left: 100, top: 100
+      });
+      canvas.add(circle);
+
+      break;
   }
 }
+
+
 function CambiarColor(color){
   context.strokeStyle = color;
 }
 function limpiar(){
-  context.clearRect(0,0,canvas.width,canvas.height);
 }

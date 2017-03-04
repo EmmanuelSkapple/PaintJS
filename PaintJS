@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type = "text/css" href="style.css">
-  <script src ="fabric.js-1.7.7/dist/fabric.min.js"></script>
-
+  <script async src ="script.js"></script>
+  <script async src ="fabric.js-1.7.7/dist/fabric.min.js"></script>
   <title>Document</title>
 </head>
 <body>
@@ -20,9 +20,10 @@
       </div>
       <div id="limpiar">
         <button id="LimpiarCanvas" onclick="limpiar()">Borrador</button>
-          <button id ="Rectangulo" onclick="figura('Rect')">Cuadrado</button>
-          <button id ="Triangulo" onclick="figura('Triangle'')">Triangulo</button>
-          <button id ="Circulo" onclick="figura('Circle')">Circulo</button>
+        <button id="Lapiz" onclick="Lapiz()">Lapiz</button>
+          <button id ="Rectangulo" onclick="figura(1)">Cuadrado</button>
+          <button id ="Triangulo" onclick="figura(2)">Triangulo</button>
+          <button id ="Circulo" onclick="figura(3)">Circulo</button>
       </div>
 
     </div>
@@ -30,6 +31,7 @@
 
   </section>
 
-  <script src ="script.js"></script>
+
+
 </body>
 </html>
