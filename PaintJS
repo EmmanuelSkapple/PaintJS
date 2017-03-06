@@ -25,11 +25,13 @@
           <button id ="Circulo" onclick="figura(3)">Circulo</button>
             <button id="LimpiarCanvas" onclick="limpiar()">Borrador</button>
             <button id ="select" onclick="select()">Select</button>
+            <a id="lnkDownload" href="#">Save image</a>
+
 
       </div>
 
     </div>
-    <canvas id="canvas" width="1270" height="460"></canvas>
+    <canvas id="canvas" width="1270" height="500"></canvas>
 
   </section>
 

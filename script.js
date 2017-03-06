@@ -28,7 +28,6 @@ function figura(fig){
     canvas.isDrawingMode= false;
   switch (fig) {
 
-
     case 1:
     var rect = new fabric.Rect({
       left: 60,
@@ -49,7 +48,7 @@ function figura(fig){
       break;
     case  3:
     var circle = new fabric.Circle({
-      radius: 50, fill: "red", left: 100, top: 100
+      radius: 50, fill: "transparent", left: 100, top: 100
       });
       canvas.add(circle);
 
@@ -57,14 +56,22 @@ function figura(fig){
   }
 }
 
+var imageSaver = document.getElementById('lnkDownload');
+imageSaver.addEventListener('click', saveImage, false);
 
-function CambiarColor(color){
-  context.strokeStyle = color;
+function saveImage(e) {
+    this.href = canvas.toDataURL({
+        format: 'jpg',
+        quality: 0.8
+    });
+    this.download = 'canvas.png'
 }
+
 function select(){
   canvas.isDrawingMode= false;
-
 }
+
+
 
 function limpiar(){
  if(canvas.isDrawingMode == false ){
