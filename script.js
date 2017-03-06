@@ -6,7 +6,7 @@ function Lapiz () {
   canvas = window._canvas = new fabric.Canvas('canvas');
   ban=true;
     }
-    canvas.backgroundColor = '#efefef';
+
     canvas.isDrawingMode= 1;
     canvas.freeDrawingBrush.color = "purple";
     canvas.freeDrawingBrush.width = 10;
@@ -25,30 +25,31 @@ function figura(fig){
   canvas = window._canvas = new fabric.Canvas('canvas');
   ban=true;
     }
+    canvas.isDrawingMode= false;
   switch (fig) {
 
 
     case 1:
     var rect = new fabric.Rect({
-      left: 100,
-      top: 100,
+      left: 60,
+      top: 60,
       fill: "green",
-      width: 200,
-      height: 200
+      width: 60,
+      height: 60
 
     });
       canvas.add(rect);
       break;
     case 2:
     var triangle = new fabric.Triangle({
-     width: 20, height: 30, fill: "blue", left: 50, top: 50
+     width: 60, height: 70, fill: "blue", left: 50, top: 50
       });
       canvas.add(triangle);
 
       break;
     case  3:
     var circle = new fabric.Circle({
-      radius: 20, fill: "red", left: 100, top: 100
+      radius: 50, fill: "red", left: 100, top: 100
       });
       canvas.add(circle);
 
@@ -60,5 +61,29 @@ function figura(fig){
 function CambiarColor(color){
   context.strokeStyle = color;
 }
+function select(){
+  canvas.isDrawingMode= false;
+
+}
+
 function limpiar(){
+ if(canvas.isDrawingMode == false ){
+  var activeObject = canvas.getActiveObject(),
+      activeGroup = canvas.getActiveGroup();
+      if (activeObject) {
+              canvas.remove(activeObject);
+
+      }
+      else if (activeGroup) {
+              var objectsInGroup = activeGroup.getObjects();
+              canvas.discardActiveGroup();
+              objectsInGroup.forEach(function(object) {
+              canvas.remove(object);
+              });
+
+      }
+    }
+    else{
+      alert("Tienes que seleccionar una figura ");
+    }
 }

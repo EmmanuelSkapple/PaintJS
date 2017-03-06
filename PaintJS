@@ -11,23 +11,25 @@
   <section>
     <div id="drawingTools">
       <div id="Colores">
-        <button id="black" onclick="CambiarColor('black')"></button>
-        <button id="white" onclick="CambiarColor('white')"></button>
-        <button id="red" onclick="CambiarColor('red')"></button>
-        <button id="green" onclick="CambiarColor('green')"></button>
-        <button id="blue" onclick="CambiarColor('blue')"></button>
+        <button id="black" value = 'black'></button>
+        <button id="white" value = 'white'></button>
+        <button id="red" value = 'red'></button>
+        <button id="green" value = 'green'></button>
+        <button id="blue" value = 'blue'></button>
 
       </div>
       <div id="limpiar">
-        <button id="LimpiarCanvas" onclick="limpiar()">Borrador</button>
         <button id="Lapiz" onclick="Lapiz()">Lapiz</button>
           <button id ="Rectangulo" onclick="figura(1)">Cuadrado</button>
-          <button id ="Triangulo" onclick="figura(2)">Triangulo</button>
+          <button id ="Triangulo" onclick="figura(2)">Triagulo</button>
           <button id ="Circulo" onclick="figura(3)">Circulo</button>
+            <button id="LimpiarCanvas" onclick="limpiar()">Borrador</button>
+            <button id ="select" onclick="select()">Select</button>
+
       </div>
 
     </div>
-    <canvas id="canvas" width="800" height="500"></canvas>
+    <canvas id="canvas" width="1270" height="460"></canvas>
 
   </section>
 
