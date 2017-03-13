@@ -14,11 +14,8 @@ var StringN ="";
 //se crear el canvas
 function crearCanvas () {
 
-
-
   if(ban==false){
 canvas= new fabric.Canvas('canvas');
-
 canvas.on('mouse:down', function(options) {
   X= options.e.layerX;
   Y= options.e.layerY;
@@ -30,9 +27,11 @@ canvas.on('mouse:up', function(options) {
   console.log(X2,Y2);
 });
   ban=true;
-    }
 }
-
+else {
+  window.location.reload();
+}
+}
 //colocar figuras
 function figura(fig){
   switch (fig) {
@@ -44,6 +43,7 @@ function figura(fig){
       fill: "green",
       width: X2-X,
       height: Y2-Y
+
     });
     string += "C,"+X.toString()+","+Y.toString()+","+(X2-X).toString()+","+(Y2-Y).toString()+",";
       canvas.add(rect);
@@ -147,6 +147,11 @@ function select(){
 }
 //Aqui se lee el String que proviene del archivo y lo convierte en figuras.
 function AbrirArchivo() {
+
+  if(ban==false){
+canvas= new fabric.Canvas('canvas')
+ban == true;
+}
   var ArrayFg = [];
   var j = 0;
     if(stringInput!=undefined){
@@ -170,8 +175,6 @@ function AbrirArchivo() {
             {
 
               switch (figura) {
-
-
                 case 'C':
 
                  var h = parseInt(ArrayFg.pop());
@@ -230,9 +233,6 @@ function AbrirArchivo() {
               break;
 
             }
-            
-
-
           }
       }
       }
