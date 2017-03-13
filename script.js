@@ -10,10 +10,15 @@ var X2;
 var Y2;
 var StringN ="";
 
+
 //se crear el canvas
 function crearCanvas () {
+
+
+
   if(ban==false){
 canvas= new fabric.Canvas('canvas');
+
 canvas.on('mouse:down', function(options) {
   X= options.e.layerX;
   Y= options.e.layerY;
@@ -40,7 +45,7 @@ function figura(fig){
       width: X2-X,
       height: Y2-Y
     });
-    string += "C,"+X.toString()+","+Y.toString()+","+(X2-X).toString()+","+(Y2-Y).toString()+" ";
+    string += "C,"+X.toString()+","+Y.toString()+","+(X2-X).toString()+","+(Y2-Y).toString()+",";
       canvas.add(rect);
       X=undefined;
       Y=undefined;
@@ -56,7 +61,7 @@ function figura(fig){
     var triangle = new fabric.Triangle({
      width: X2-X, height: Y2-Y, fill: "blue", left: X, top: Y
       });
-      string += "T,"+X.toString()+","+Y.toString()+","+(X2-X).toString()+","+(Y2-Y).toString()+" ";
+      string += "T,"+X.toString()+","+Y.toString()+","+(X2-X).toString()+","+(Y2-Y).toString()+",";
       canvas.add(triangle);
       X=undefined;
       Y=undefined;
@@ -72,7 +77,7 @@ function figura(fig){
     var circle = new fabric.Circle({
       radius: (X2-X)/2, fill: "green", left: X, top: Y
       });
-      string += "E,"+X.toString()+","+Y.toString()+","+(X2-X).toString()+","+(Y2-Y).toString()+" ";
+      string += "E,"+X.toString()+","+Y.toString()+","+(X2-X).toString()+","+(Y2-Y).toString()+",";
 
       canvas.add(circle);
       X=undefined;
@@ -95,7 +100,7 @@ function figura(fig){
          left: X,
          top: Y,
      });
-     string += "L,"+X.toString()+","+Y.toString()+","+(X2-X).toString()+","+(Y2-Y).toString()+" ";
+     string += "L,"+X.toString()+","+Y.toString()+","+(X2-X).toString()+","+(Y2-Y).toString()+",";
      canvas.add(line1);
      X=undefined;
      Y=undefined;
@@ -152,61 +157,80 @@ function AbrirArchivo() {
 
             if(stringInput[i]>='0' && stringInput[i] <='9')
             {
-              alert('soy un numero');
+
             StringN += stringInput.substring(i,i+1);
 
             }
-            else if (stringInput[i] ==','&& stringInput[i]>='0' && stringInput[i] <='9') {
+            else if (stringInput[i] ==','&& stringInput[i-1]>='0' && stringInput[i-1] <='9') {
               ArrayFg.push(StringN);
               StringN = "";
                 j++;
             }
-            if(stringInput[i+1] == 'C' ||stringInput[i+1] == 'T' ||stringInput[i+1] == 'E' ||stringInput[i+1] == 'L')
+            if(stringInput[i+1] == 'C' ||stringInput[i+1] == 'T' ||stringInput[i+1] == 'E' ||stringInput[i+1] == 'L'||stringInput[i+1] ==null)
             {
 
               switch (figura) {
+
+
                 case 'C':
+
+                 var h = parseInt(ArrayFg.pop());
+                 var w = parseInt(ArrayFg.pop());
+                 var t = parseInt(ArrayFg.pop());
+                 var l = parseInt(ArrayFg.pop());
                 var rect = new fabric.Rect({
-                  left: ArrayFg[0],
-                  top: ArrayFg[1],
+                  left: l,
+                  top: t,
                   fill: "green",
-                  width: ArrayFg[2],
-                  height: ArrayFg[3]
+                  width: w,
+                  height: h
                 });
                   canvas.add(rect);
 
                   break;
                 case 'T':
+                var h = parseInt(ArrayFg.pop());
+                var w = parseInt(ArrayFg.pop());
+                var t = parseInt(ArrayFg.pop());
+                var l = parseInt(ArrayFg.pop());
+
                 var triangle = new fabric.Triangle({
-                 width: ArrayFg[2], height: ArrayFg[3], fill: "blue", left: X, top: Y
+                 width: w, height: h, fill: "blue", left: l, top: t
                   });
                   canvas.add(triangle);
 
                 case  'E':
+                var h = parseInt(ArrayFg.pop());
+                var w = parseInt(ArrayFg.pop());
+                var t = parseInt(ArrayFg.pop());
+                var l = parseInt(ArrayFg.pop());
                 var circle = new fabric.Circle({
-                  radius: (X2-X)/2, fill: "green", left: X, top: Y
+                  radius: (w)/2, fill: "green", left: l, top: t
                   });
 
                   canvas.add(circle);
 
                 case 'L':
+                var h = parseInt(ArrayFg.pop());
+                var w = parseInt(ArrayFg.pop());
+                var t = parseInt(ArrayFg.pop());
+                var l = parseInt(ArrayFg.pop());
                 var line1 = new fabric.Line([X, Y, X2, Y2], {
                      stroke: 'blue',
                      strokeWidth: 2,
                      hasControls: true,
                      hasRotatingPoint: true,
                      padding: 10,
-                     left: X,
-                     top: Y,
+                     left: l,
+                     top: t,
                  });
                  break
 
               }
+              break;
 
             }
-            else {
-             ban2 = false;
-            }
+            
 
 
           }

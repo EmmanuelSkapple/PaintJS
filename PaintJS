@@ -26,7 +26,7 @@
           <button id ="Circulo" onclick="figura(3)">Circulo</button>
             <button id ="Abrir" onclick="AbrirArchivo()">Abrir Archivo</button>
             <button id="LimpiarCanvas" onclick="limpiar()">Borrador</button>
-            <button id="create" onclick="download('hola.pik')">Crear Archivo</button>
+            <button id="create" onclick="download('holaaaaaaaa.pik')">Crear Archivo</button>
             <a download="info-figuras.txt" id="downloadlink" style="display: none">Download</a>
 
       </div>
