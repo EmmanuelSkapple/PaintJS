@@ -1,4 +1,6 @@
 var ban = false;
+var ban2 = false;
+var ban3 = false;
 var canvas;
 var string="";
 var stringInput="";
@@ -6,6 +8,8 @@ var X;
 var Y;
 var X2;
 var Y2;
+var StringN ="";
+
 //se crear el canvas
 function crearCanvas () {
   if(ban==false){
@@ -136,6 +140,85 @@ function download(filename) {
 function select(){
   canvas.isDrawingMode= false;
 }
+//Aqui se lee el String que proviene del archivo y lo convierte en figuras.
+function AbrirArchivo() {
+  var ArrayFg = [];
+  var j = 0;
+    if(stringInput!=undefined){
+      for (var i = 0; i < stringInput.length; i++) {
+        if(stringInput[i] == 'C' ||stringInput[i] == 'T' ||stringInput[i] == 'E' ||stringInput[i] == 'L'){
+            var figura = stringInput[i];
+          for (var i = i; i < stringInput.length; i++) {
+
+            if(stringInput[i]>='0' && stringInput[i] <='9')
+            {
+              alert('soy un numero');
+            StringN += stringInput.substring(i,i+1);
+
+            }
+            else if (stringInput[i] ==','&& stringInput[i]>='0' && stringInput[i] <='9') {
+              ArrayFg.push(StringN);
+              StringN = "";
+                j++;
+            }
+            if(stringInput[i+1] == 'C' ||stringInput[i+1] == 'T' ||stringInput[i+1] == 'E' ||stringInput[i+1] == 'L')
+            {
+
+              switch (figura) {
+                case 'C':
+                var rect = new fabric.Rect({
+                  left: ArrayFg[0],
+                  top: ArrayFg[1],
+                  fill: "green",
+                  width: ArrayFg[2],
+                  height: ArrayFg[3]
+                });
+                  canvas.add(rect);
+
+                  break;
+                case 'T':
+                var triangle = new fabric.Triangle({
+                 width: ArrayFg[2], height: ArrayFg[3], fill: "blue", left: X, top: Y
+                  });
+                  canvas.add(triangle);
+
+                case  'E':
+                var circle = new fabric.Circle({
+                  radius: (X2-X)/2, fill: "green", left: X, top: Y
+                  });
+
+                  canvas.add(circle);
+
+                case 'L':
+                var line1 = new fabric.Line([X, Y, X2, Y2], {
+                     stroke: 'blue',
+                     strokeWidth: 2,
+                     hasControls: true,
+                     hasRotatingPoint: true,
+                     padding: 10,
+                     left: X,
+                     top: Y,
+                 });
+                 break
+
+              }
+
+            }
+            else {
+             ban2 = false;
+            }
+
+
+          }
+      }
+      }
+    }
+    else {
+      alert("Selecciona un Archivo!!!");
+    }
+
+}
+
 //Limpiar obtejos
 function limpiar(){
  if(canvas.isDrawingMode == false ){

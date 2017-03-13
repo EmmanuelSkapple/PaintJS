@@ -24,6 +24,7 @@
           <button id ="Rectangulo" onclick="figura(1)">Cuadrado</button>
           <button id ="Triangulo" onclick="figura(2)">Triagulo</button>
           <button id ="Circulo" onclick="figura(3)">Circulo</button>
+            <button id ="Abrir" onclick="AbrirArchivo()">Abrir Archivo</button>
             <button id="LimpiarCanvas" onclick="limpiar()">Borrador</button>
             <button id="create" onclick="download('hola.pik')">Crear Archivo</button>
             <a download="info-figuras.txt" id="downloadlink" style="display: none">Download</a>
@@ -36,7 +37,7 @@
   </section>
   <div id="Archivo">
     <input type="file" name="file" id="file">
-      <button id ="AbrirArchivo" onclick="AbrirArchivo()">Abrir</button>
+
   </div>
 
 
